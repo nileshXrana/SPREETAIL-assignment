@@ -178,19 +178,23 @@ const Dashboard = () => {
       <nav className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 justify-between items-center">
-            <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500 text-white font-bold shadow-md shadow-emerald-500/10">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500 text-white font-bold shadow-lg shadow-brand-500/20">
-                S
-              </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900">Splitwise MVP</span>
-              <span className="rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-600 border border-emerald-100">INR</span>
-            </div>
-            
             <div className="flex items-center gap-4">
-              <span className="hidden sm:inline text-sm font-medium text-slate-600">
-                Hi, <span className="font-semibold text-slate-900">{user?.name}</span>
-              </span>
+              <div className="flex items-center gap-3">
+                <div className="h-9 w-9 flex items-center justify-center rounded-lg bg-brand-500 text-white font-bold shadow-lg">
+                  S
+                </div>
+                <div>
+                  <div className="text-xl font-bold tracking-tight text-slate-900">Splitwise MVP</div>
+                  <div className="rounded-md bg-emerald-50 inline-block px-2 py-0.5 text-xs font-semibold text-emerald-600 border border-emerald-100">INR</div>
+                </div>
+              </div>
+
+              <div className="hidden sm:flex items-center ml-4 text-sm text-slate-600">
+                Hi, <span className="font-semibold text-slate-900 ml-1">{user?.name}</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
               <button 
                 onClick={logout}
                 className="flex items-center gap-1.5 rounded-lg border border-[#4e3ea4] bg-[#120730] px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-[#241159] hover:text-white transition-all"
