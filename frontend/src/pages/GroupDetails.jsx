@@ -257,10 +257,10 @@ const GroupDetails = () => {
 
   if (loading) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-slate-50">
+      <div className="flex h-screen w-screen items-center justify-center bg-[#0f0424]">
         <div className="flex flex-col items-center gap-3">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent"></div>
-          <p className="text-sm font-medium text-slate-500">Loading group details...</p>
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-brand-500 border-t-transparent"></div>
+          <p className="text-sm font-medium text-slate-300">Loading group details...</p>
         </div>
       </div>
     );
@@ -268,16 +268,16 @@ const GroupDetails = () => {
 
   if (error || !group) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-slate-50 px-4">
+      <div className="flex h-screen w-screen items-center justify-center bg-[#0f0424] px-4">
         <div className="max-w-md w-full text-center space-y-4">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-rose-500/10 text-rose-400">
             <AlertCircle className="h-6 w-6" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">An Error Occurred</h3>
-          <p className="text-sm text-slate-500">{error || 'Group not found'}</p>
+          <h3 className="text-lg font-bold text-slate-100">An Error Occurred</h3>
+          <p className="text-sm text-slate-300">{error || 'Group not found'}</p>
           <button
             onClick={() => navigate('/dashboard')}
-            className="inline-flex items-center gap-2 rounded-xl bg-slate-800 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 transition-all"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#1d0d43] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2c1c6a] transition-all"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Dashboard
@@ -292,20 +292,20 @@ const GroupDetails = () => {
   const userNetBalance = userBalanceObj ? userBalanceObj.netBalance : 0;
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
+    <div className="min-h-screen bg-[#0f0424] text-slate-100 pb-16">
       {/* Top Header Panel */}
-      <div className="bg-white border-b border-slate-200/80 sticky top-0 z-10 shadow-sm">
+      <div className="bg-[#110634] border-b border-[#4e3ea4]/20 sticky top-0 z-10 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-4">
             <button
               onClick={() => navigate('/dashboard')}
-              className="p-2 rounded-xl hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition-all"
+              className="p-2 rounded-xl hover:bg-[#241159] text-slate-300 hover:text-white transition-all"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">{group.name}</h1>
+                <h1 className="text-2xl font-extrabold text-white tracking-tight">{group.name}</h1>
                 <span className="rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 border border-emerald-100">
                   Group ID: {group.id.substring(0, 8)}
                 </span>
@@ -319,7 +319,7 @@ const GroupDetails = () => {
           <div className="flex gap-2 w-full sm:w-auto">
             <button
               onClick={() => setShowSettleModal(true)}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-700 transition-all"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-xl border border-[#4e3ea4] bg-[#120730] hover:bg-[#241159] px-4 py-2.5 text-sm font-semibold text-slate-300 transition-all"
             >
               <ArrowRightLeft className="h-4 w-4 text-slate-400" />
               Settle Debt
@@ -335,7 +335,7 @@ const GroupDetails = () => {
                 setExpenseError('');
                 setShowExpenseModal(true);
               }}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-600/10 transition-all"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-xl bg-brand-500 hover:bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-xl shadow-brand-500/15 transition-all"
             >
               <Plus className="h-4 w-4" />
               Add Expense
@@ -353,10 +353,10 @@ const GroupDetails = () => {
           {/* Your Standing Banner */}
           <div className={`rounded-2xl p-5 border shadow-sm ${
             userNetBalance > 0 
-              ? 'bg-emerald-50/50 border-emerald-100 text-emerald-800' 
+              ? 'bg-[#122a18] border-emerald-500/10 text-emerald-300' 
               : userNetBalance < 0 
-                ? 'bg-rose-50/50 border-rose-100 text-rose-800' 
-                : 'bg-slate-50 border-slate-200 text-slate-600'
+                ? 'bg-[#3f1220] border-rose-500/10 text-rose-300' 
+                : 'bg-[#120c28] border-slate-500/10 text-slate-300'
           }`}>
             <p className="text-xs font-semibold uppercase tracking-wider opacity-80">Your balance in group</p>
             <h3 className="text-2xl font-extrabold mt-1">
@@ -365,7 +365,7 @@ const GroupDetails = () => {
           </div>
 
           {/* Members List Box */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+          <div className="bg-[#140a2c] rounded-2xl border border-[#4e3ea4]/20 shadow-sm overflow-hidden">
             <div className="border-b border-slate-200/80 px-5 py-4 bg-slate-50/50">
               <h3 className="font-bold text-slate-900 flex items-center gap-2">
                 <Users className="h-4 w-4 text-slate-400" />
@@ -373,16 +373,16 @@ const GroupDetails = () => {
               </h3>
             </div>
 
-            <div className="p-4 divide-y divide-slate-100 max-h-60 overflow-y-auto">
+            <div className="p-4 divide-y divide-[#37336e] max-h-60 overflow-y-auto">
               {group.members.map(member => (
                 <div key={member.userId} className="flex justify-between items-center py-3 first:pt-0 last:pb-0">
                   <div>
-                    <p className="text-sm font-bold text-slate-900 flex items-center gap-1.5 flex-wrap">
+                    <p className="text-sm font-bold text-white flex items-center gap-1.5 flex-wrap">
                       {member.name} 
                       {member.userId === user.id && <span className="text-[10px] font-semibold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">You</span>}
                       {!member.isActive && <span className="text-[10px] font-semibold text-rose-500 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-100">Left</span>}
                     </p>
-                    <p className="text-xs text-slate-400 mt-0.5">{member.email}</p>
+                    <p className="text-xs text-slate-300 mt-0.5">{member.email}</p>
                     {member.leftAt && (
                       <p className="text-[9px] text-slate-400 mt-0.5">
                         Left group: {new Date(member.leftAt).toLocaleDateString()}
@@ -432,7 +432,7 @@ const GroupDetails = () => {
           </div>
 
           {/* Group Balances standing summary */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+          <div className="bg-[#140a2c] rounded-2xl border border-[#4e3ea4]/20 shadow-sm overflow-hidden">
             <div className="border-b border-slate-200/80 px-5 py-4 bg-slate-50/50">
               <h3 className="font-bold text-slate-900 flex items-center gap-2">
                 <Landmark className="h-4 w-4 text-slate-400" />
@@ -444,22 +444,22 @@ const GroupDetails = () => {
                 <div key={bal.userId} className="rounded-xl overflow-hidden">
                   <div
                     onClick={() => setExpandedBalanceUserId(expandedBalanceUserId === bal.userId ? null : bal.userId)}
-                    className="flex justify-between items-center p-3 hover:bg-slate-50 transition-all cursor-pointer text-sm"
+                    className="flex justify-between items-center p-3 hover:bg-[#1c0d46] transition-all cursor-pointer text-sm"
                   >
                     <div>
-                      <span className="font-medium text-slate-700 flex items-center gap-1">
+                      <span className="font-medium text-slate-100 flex items-center gap-1">
                         {bal.name}
                         {!bal.isActive && <span className="text-[9px] font-semibold text-rose-500 bg-rose-50 px-1 py-0.2 rounded border border-rose-100">Left</span>}
                       </span>
                       <p className="text-[10px] text-slate-400">Click to view breakdown</p>
                     </div>
-                    <span className={`font-bold ${bal.netBalance > 0 ? 'text-emerald-600' : bal.netBalance < 0 ? 'text-rose-600' : 'text-slate-400'}`}>
+                    <span className={`font-bold ${bal.netBalance > 0 ? 'text-emerald-400' : bal.netBalance < 0 ? 'text-rose-400' : 'text-slate-400'}`}>
                       {bal.netBalance > 0 ? `+₹${bal.netBalance}` : bal.netBalance < 0 ? `-₹${Math.abs(bal.netBalance)}` : '₹0.00'}
                     </span>
                   </div>
 
                   {expandedBalanceUserId === bal.userId && (
-                    <div className="bg-slate-50 px-4 py-3 border-t border-slate-100 space-y-2 animate-in slide-in-from-top-1 duration-150">
+                    <div className="bg-[#110730] px-4 py-3 border-t border-[#4e3ea4]/10 space-y-2 animate-in slide-in-from-top-1 duration-150">
                       <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Expense Shares Breakdown</p>
                       {bal.breakdown && bal.breakdown.length > 0 ? (
                         bal.breakdown.map((item, idx) => (
@@ -482,7 +482,7 @@ const GroupDetails = () => {
           </div>
 
           {/* Debt Simplification Card */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+          <div className="bg-[#140a2c] rounded-2xl border border-[#4e3ea4]/20 shadow-sm overflow-hidden">
             <div className="border-b border-slate-200/80 px-5 py-4 bg-slate-50/50">
               <h3 className="font-bold text-slate-900 flex items-center gap-2">
                 <ArrowRightLeft className="h-4 w-4 text-slate-400" />
@@ -513,47 +513,47 @@ const GroupDetails = () => {
 
         {/* Right Hand / Middle: Expenses List */}
         <div className="md:col-span-2 space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+          <div className="bg-[#140a2c] rounded-2xl border border-[#4e3ea4]/20 shadow-sm overflow-hidden">
             <div className="border-b border-slate-200/80 px-6 py-4 bg-slate-50/50 flex justify-between items-center">
               <h3 className="font-bold text-slate-950">Expense Log</h3>
             </div>
 
             {group.expenses.length === 0 ? (
               <div className="text-center py-20 px-4">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-400">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-[#110730] text-slate-400">
                   <Landmark className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 text-sm font-semibold text-slate-900">No expenses recorded</h3>
-                <p className="mt-1 text-sm text-slate-500">Create an expense to split costs with the group</p>
+                <h3 className="mt-4 text-sm font-semibold text-slate-100">No expenses recorded</h3>
+                <p className="mt-1 text-sm text-slate-400">Create an expense to split costs with the group</p>
               </div>
             ) : (
               <div className="divide-y divide-slate-100">
                 {group.expenses.map(expense => (
                   <div
                     key={expense.id}
-                    className="p-6 hover:bg-slate-50/30 transition-all flex items-center justify-between group cursor-pointer"
+                    className="p-6 hover:bg-[#1d0f42] transition-all flex items-center justify-between group cursor-pointer"
                     onClick={(e) => {
                       // Prevent trigger if clicking on delete trash button
                       if (e.target.closest('.delete-btn')) return;
                       navigate(`/expense/${expense.id}`);
                     }}
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-11 w-11 flex-col items-center justify-center rounded-xl bg-slate-100 text-slate-500">
+                      <div className="flex items-center gap-4">
+                      <div className="flex h-11 w-11 flex-col items-center justify-center rounded-xl bg-[#11082f] text-slate-300">
                         <span className="text-[10px] font-extrabold uppercase">
                           {new Date(expense.createdAt).toLocaleString('default', { month: 'short' })}
                         </span>
-                        <span className="text-base font-black leading-none">
+                        <span className="text-base font-black leading-none text-white">
                           {new Date(expense.createdAt).getDate()}
                         </span>
                       </div>
                       
                       <div>
-                        <h4 className="font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                        <h4 className="font-bold text-white group-hover:text-brand-300 transition-colors">
                           {expense.description}
                         </h4>
                         <p className="text-xs text-slate-400 mt-0.5">
-                          Paid by <span className="font-semibold text-slate-600">{expense.paidBy.id === user.id ? 'You' : expense.paidBy.name}</span>
+                          Paid by <span className="font-semibold text-slate-200">{expense.paidBy.id === user.id ? 'You' : expense.paidBy.name}</span>
                         </p>
                       </div>
                     </div>
@@ -561,7 +561,7 @@ const GroupDetails = () => {
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <p className="text-xs text-slate-400 font-medium">Total Spent</p>
-                        <p className="text-sm font-extrabold text-slate-900">
+                        <p className="text-sm font-extrabold text-slate-100">
                           {expense.originalCurrency === 'USD' ? `$${expense.originalAmount}` : `₹${expense.amount}`}
                         </p>
                         {expense.originalCurrency === 'USD' && (
@@ -571,13 +571,13 @@ const GroupDetails = () => {
 
                       <div className="flex items-center gap-1.5">
                         <button
-                          className="delete-btn p-2 rounded-lg text-slate-300 hover:text-rose-600 hover:bg-rose-50 transition-all"
+                          className="delete-btn p-2 rounded-lg text-slate-300 hover:text-rose-400 hover:bg-rose-500/10 transition-all"
                           onClick={() => handleDeleteExpense(expense.id)}
                           title="Delete Expense"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
-                        <span className="p-2 rounded-lg text-slate-400 group-hover:text-slate-800 transition-colors">
+                        <span className="p-2 rounded-lg text-slate-400 group-hover:text-slate-200 transition-colors">
                           <MessageSquare className="h-4 w-4" />
                         </span>
                       </div>
@@ -593,13 +593,13 @@ const GroupDetails = () => {
 
       {/* Add Expense Modal Overlay */}
       {showExpenseModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="w-full max-w-lg bg-white rounded-2xl border border-slate-200/80 shadow-2xl p-6 relative animate-in fade-in-50 zoom-in-95 duration-200 my-8">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">Add Expense</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="w-full max-w-lg bg-[#140a2c] rounded-2xl border border-[#4e3ea4]/20 shadow-2xl p-6 relative animate-in fade-in-50 zoom-in-95 duration-200 my-8">
+            <h3 className="text-lg font-bold text-slate-100 mb-4">Add Expense</h3>
             
             <form onSubmit={handleCreateExpense} className="space-y-4">
               {expenseError && (
-                <div className="rounded-lg bg-red-50 p-3 text-sm font-medium text-red-600 border border-red-100">
+                <div className="rounded-lg bg-rose-500/10 p-3 text-sm font-medium text-rose-200 border border-rose-500/20">
                   {expenseError}
                 </div>
               )}
@@ -613,7 +613,7 @@ const GroupDetails = () => {
                     placeholder="e.g. Dinner, Groceries"
                     value={expenseDesc}
                     onChange={(e) => setExpenseDesc(e.target.value)}
-                    className="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3 text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-sm"
+                    className="block w-full rounded-xl border border-[#4e3ea4]/30 bg-[#0f0424] py-2.5 px-3 text-slate-100 focus:border-brand-500 focus:outline-none sm:text-sm"
                   />
                 </div>
                 <div>
@@ -621,7 +621,7 @@ const GroupDetails = () => {
                   <select
                     value={expenseCurrency}
                     onChange={(e) => setExpenseCurrency(e.target.value)}
-                    className="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3 text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-sm"
+                    className="block w-full rounded-xl border border-[#4e3ea4]/30 bg-[#0f0424] py-2.5 px-3 text-slate-100 focus:border-brand-500 focus:outline-none sm:text-sm"
                   >
                     <option value="INR">INR (₹)</option>
                     <option value="USD">USD ($)</option>
@@ -650,7 +650,7 @@ const GroupDetails = () => {
                   <select
                     value={expensePayer}
                     onChange={(e) => setExpensePayer(e.target.value)}
-                    className="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3 text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-sm"
+                    className="block w-full rounded-xl border border-[#4e3ea4]/30 bg-[#0f0424] py-2.5 px-3 text-slate-100 focus:border-brand-500 focus:outline-none sm:text-sm"
                   >
                     {group.members.map(m => (
                       <option key={m.userId} value={m.userId}>{m.name}</option>
@@ -670,7 +670,7 @@ const GroupDetails = () => {
                       });
                       setExpenseSplits(clearedSplits);
                     }}
-                    className="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3 text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-sm"
+                    className="block w-full rounded-xl border border-[#4e3ea4]/30 bg-[#0f0424] py-2.5 px-3 text-slate-100 focus:border-brand-500 focus:outline-none sm:text-sm"
                   >
                     <option value="EQUAL">Split Equally</option>
                     <option value="UNEQUAL">Unequal exact amount</option>
@@ -716,7 +716,7 @@ const GroupDetails = () => {
                                 [member.userId]: e.target.value
                               });
                             }}
-                            className="w-24 rounded-lg border border-slate-200 bg-white py-1 px-2.5 text-right text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-xs"
+                            className="w-24 rounded-lg border border-[#4e3ea4]/30 bg-[#0f0424] py-1 px-2.5 text-right text-slate-100 focus:border-brand-500 focus:outline-none sm:text-xs"
                           />
                           <span className="text-xs text-slate-400 font-semibold w-6">
                             {expenseSplitType === 'UNEQUAL' ? '₹' : expenseSplitType === 'PERCENTAGE' ? '%' : 'sh'}
@@ -732,14 +732,14 @@ const GroupDetails = () => {
                 <button
                   type="button"
                   onClick={() => setShowExpenseModal(false)}
-                  className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-all"
+                  className="rounded-xl border border-[#4e3ea4]/30 px-4 py-2.5 text-sm font-semibold text-slate-200 hover:bg-[#241159] transition-all"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={creatingExpense}
-                  className="flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700 disabled:bg-emerald-400 shadow-md shadow-emerald-600/10 transition-all"
+                  className="flex items-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-600 disabled:bg-slate-500 shadow-xl shadow-brand-500/15 transition-all"
                 >
                   {creatingExpense ? 'Saving...' : 'Add Expense'}
                 </button>
@@ -751,13 +751,13 @@ const GroupDetails = () => {
 
       {/* Record Settlement Modal Overlay */}
       {showSettleModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-white rounded-2xl border border-slate-200/80 shadow-2xl p-6 relative animate-in fade-in-50 zoom-in-95 duration-200">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">Record Settlement</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md bg-[#140a2c] rounded-2xl border border-[#4e3ea4]/20 shadow-2xl p-6 relative animate-in fade-in-50 zoom-in-95 duration-200">
+            <h3 className="text-lg font-bold text-slate-100 mb-4">Record Settlement</h3>
             
             <form onSubmit={handleRecordSettlement} className="space-y-4">
               {settleError && (
-                <div className="rounded-lg bg-red-50 p-3 text-sm font-medium text-red-600 border border-red-100">
+                <div className="rounded-lg bg-rose-500/10 p-3 text-sm font-medium text-rose-200 border border-rose-500/20">
                   {settleError}
                 </div>
               )}
@@ -767,7 +767,7 @@ const GroupDetails = () => {
                 <select
                   value={settleSender}
                   onChange={(e) => setSettleSender(e.target.value)}
-                  className="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3 text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-sm"
+                  className="block w-full rounded-xl border border-[#4e3ea4]/30 bg-[#0f0424] py-2.5 px-3 text-slate-100 focus:border-brand-500 focus:outline-none sm:text-sm"
                 >
                   {group.members.map(m => (
                     <option key={m.userId} value={m.userId}>{m.name}</option>
@@ -780,7 +780,7 @@ const GroupDetails = () => {
                 <select
                   value={settleReceiver}
                   onChange={(e) => setSettleReceiver(e.target.value)}
-                  className="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3 text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-sm"
+                  className="block w-full rounded-xl border border-[#4e3ea4]/30 bg-[#0f0424] py-2.5 px-3 text-slate-100 focus:border-brand-500 focus:outline-none sm:text-sm"
                 >
                   {group.members.map(m => (
                     <option key={m.userId} value={m.userId}>{m.name}</option>
@@ -797,7 +797,7 @@ const GroupDetails = () => {
                   placeholder="0.00"
                   value={settleAmount}
                   onChange={(e) => setSettleAmount(e.target.value)}
-                  className="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3 text-slate-900 focus:border-emerald-500 focus:outline-none sm:text-sm"
+                  className="block w-full rounded-xl border border-[#4e3ea4]/30 bg-[#0f0424] py-2.5 px-3 text-slate-100 focus:border-brand-500 focus:outline-none sm:text-sm"
                 />
               </div>
 
@@ -805,14 +805,14 @@ const GroupDetails = () => {
                 <button
                   type="button"
                   onClick={() => setShowSettleModal(false)}
-                  className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-all"
+                  className="rounded-xl border border-[#4e3ea4]/30 px-4 py-2.5 text-sm font-semibold text-slate-200 hover:bg-[#241159] transition-all"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={settling}
-                  className="flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700 disabled:bg-emerald-400 shadow-md shadow-emerald-600/10 transition-all"
+                  className="flex items-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-600 disabled:bg-slate-500 shadow-xl shadow-brand-500/15 transition-all"
                 >
                   {settling ? 'Recording...' : 'Record Payment'}
                 </button>

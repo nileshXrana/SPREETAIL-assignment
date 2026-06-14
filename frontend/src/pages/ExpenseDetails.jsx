@@ -105,10 +105,10 @@ const ExpenseDetails = () => {
 
   if (loading) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-slate-50">
+      <div className="flex h-screen w-screen items-center justify-center bg-[#0f0424]">
         <div className="flex flex-col items-center gap-3">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent"></div>
-          <p className="text-sm font-medium text-slate-500">Loading bill details...</p>
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-brand-500 border-t-transparent"></div>
+          <p className="text-sm font-medium text-slate-300">Loading bill details...</p>
         </div>
       </div>
     );
@@ -116,16 +116,16 @@ const ExpenseDetails = () => {
 
   if (error || !expense) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-slate-50 px-4">
+      <div className="flex h-screen w-screen items-center justify-center bg-[#0f0424] px-4">
         <div className="max-w-md w-full text-center space-y-4">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-rose-500/10 text-rose-400">
             <Clock className="h-6 w-6" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">An Error Occurred</h3>
-          <p className="text-sm text-slate-500">{error || 'Expense not found'}</p>
+          <h3 className="text-lg font-bold text-slate-100">An Error Occurred</h3>
+          <p className="text-sm text-slate-300">{error || 'Expense not found'}</p>
           <button
             onClick={() => navigate('/dashboard')}
-            className="inline-flex items-center gap-2 rounded-xl bg-slate-800 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 transition-all"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#1d0d43] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2c1c6a] transition-all"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Dashboard
@@ -136,19 +136,19 @@ const ExpenseDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 pb-12">
+    <div className="min-h-screen bg-[#0f0424] text-slate-100 pb-12">
       {/* Top Header Panel */}
-      <div className="bg-white border-b border-slate-200/80 sticky top-0 z-10 shadow-sm">
+      <div className="bg-[#110634] border-b border-[#4e3ea4]/20 sticky top-0 z-10 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <button
               onClick={() => navigate(`/group/${expense.group.id}`)}
-              className="p-2 rounded-xl hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition-all"
+              className="p-2 rounded-xl hover:bg-[#241159] text-slate-300 hover:text-white transition-all"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
             <div>
-              <h1 className="text-xl font-bold text-slate-900 tracking-tight">{expense.description}</h1>
+              <h1 className="text-xl font-bold text-white tracking-tight">{expense.description}</h1>
               <p className="text-xs text-slate-400 mt-0.5">
                 Group: <span className="font-semibold hover:underline cursor-pointer" onClick={() => navigate(`/group/${expense.group.id}`)}>{expense.group.name}</span>
               </p>
@@ -156,7 +156,7 @@ const ExpenseDetails = () => {
           </div>
           <div className="text-right">
             <p className="text-xs text-slate-400 font-medium">Total Bill</p>
-            <p className="text-lg font-black text-slate-900">₹{expense.amount}</p>
+            <p className="text-lg font-black text-slate-100">₹{expense.amount}</p>
           </div>
         </div>
       </div>
@@ -168,15 +168,15 @@ const ExpenseDetails = () => {
         <div className="md:col-span-1 space-y-6">
           
           {/* Card: Bill Meta Details */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-4">
-            <h3 className="font-bold text-slate-950 text-base border-b border-slate-100 pb-3">Bill Details</h3>
+          <div className="bg-[#140a2c] rounded-2xl border border-[#4e3ea4]/20 shadow-sm p-6 space-y-4">
+            <h3 className="font-bold text-slate-100 text-base border-b border-[#4e3ea4]/10 pb-3">Bill Details</h3>
             
             <div className="space-y-3.5">
               <div className="flex items-center gap-3 text-sm">
                 <Shield className="h-4 w-4 text-emerald-500" />
                 <div>
                   <p className="text-xs text-slate-400 font-medium leading-none">Paid By</p>
-                  <p className="font-semibold text-slate-700 mt-0.5">{expense.paidBy.id === user.id ? 'You' : expense.paidBy.name}</p>
+                  <p className="font-semibold text-slate-100 mt-0.5">{expense.paidBy.id === user.id ? 'You' : expense.paidBy.name}</p>
                 </div>
               </div>
 
@@ -184,7 +184,7 @@ const ExpenseDetails = () => {
                 <Calendar className="h-4 w-4 text-slate-400" />
                 <div>
                   <p className="text-xs text-slate-400 font-medium leading-none">Recorded On</p>
-                  <p className="font-semibold text-slate-700 mt-0.5">
+                  <p className="font-semibold text-slate-100 mt-0.5">
                     {new Date(expense.createdAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}
                   </p>
                 </div>
@@ -194,7 +194,7 @@ const ExpenseDetails = () => {
                 <CheckCircle className="h-4 w-4 text-slate-400" />
                 <div>
                   <p className="text-xs text-slate-400 font-medium leading-none">Original Split Type</p>
-                  <p className="font-semibold text-slate-700 mt-0.5 uppercase tracking-wide text-xs">{expense.splits[0]?.splitType || 'EQUAL'}</p>
+                  <p className="font-semibold text-slate-100 mt-0.5 uppercase tracking-wide text-xs">{expense.splits[0]?.splitType || 'EQUAL'}</p>
                 </div>
               </div>
             </div>
